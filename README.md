@@ -4,32 +4,45 @@ Aim : study of panda
 
 Pandas is an essential, open-source Python library for data analysis and manipulation.
 
-pd.Series(): Creates a one-dimensional labeled array capable of holding any data type.
+1. Data Exploration & Inspection
+Before performing operations, you need to understand the "health" of your dataset.
 
-pd.DataFrame(): Creates a two-dimensional, size-mutable, and tabular data structure with labeled axes.
+df.info(): The first command you should run. It shows the number of non-null entries and memory usage.
 
-df.shape: An attribute that returns a tuple representing the dimensionality of the DataFrame.
+df.describe(): Generates descriptive statistics (mean, std, min, max, quartiles) for all numerical columns.
 
-df.ndim: Returns an integer representing the number of axes/dimensions.
+df.head(n) / df.tail(n): Views the first or last n rows to check for data alignment.
 
-df.columns: Returns the column labels of the DataFrame.
+df.nunique(): Counts unique values in each column—essential for identifying categorical vs. continuous data.
 
-df.dtypes: Returns the data types of each column.
+2. Handling Missing Data (Data Cleaning)
+Real data is rarely perfect. Pandas provides tools to manage "NaN" (Not a Number) values.
 
-df.loc[row_index, "ColumnName"]: Accesses a group of rows and columns by labels or a boolean array.
+df.isnull().sum(): Returns the count of missing values per column.
 
-df.iloc[row_index, col_index]: Accesses a group of rows and columns by integer-based positions.
+df.dropna(): Removes rows or columns with missing values.
 
-df.drop(): Removes specified rows or columns. In the notebook, axis=1 is used to specify a column removal.
+df.fillna(value): Replaces missing values with a specific number or the mean/median to keep the dataset size intact.
 
-df.mean(): Calculates the average of the values in a column.
+3. Advanced Data Manipulation
+Grouping and Aggregation
 
-df.max(): Returns the highest value in a column.
+This is the "Power User" feature of Pandas, often called the Split-Apply-Combine strategy.
 
-df.min(): Returns the lowest value in a column.
+df.groupby('ColumnName').mean(): Groups data by a category and calculates the average for each group.
 
-df[df["Marks"] > 80]: It filters the DataFrame to show only the rows where the condition (Marks greater than 80) is true.
+df.groupby('ColumnName').agg(['min', 'max', 'sum']): Performs multiple different calculations at once on grouped data.
 
-Conclusion:
+Sorting
 
-Hence pandas library were implented in python and operations were done using them.
+df.sort_values(by="ColumnName", ascending=False): Reorders your data based on specific criteria.
+
+4. Merging and Joining
+Rarely do we work with just one table. Pandas handles relational data like SQL does.
+
+Function	Purpose
+pd.concat()	Glues two DataFrames together (either vertically or horizontally).
+pd.merge()	Joins two DataFrames based on a common key (Inner, Outer, Left, Right joins).
+df.join()	Joins DataFrames based on their index labels.
+
+Conclusion: > The Pandas library provides a robust ecosystem for the entire data lifecycle: from ingestion (reading CSVs/SQL) and cleaning (handling nulls) to transformation (grouping/merging) and statistical analysis. By utilizing the DataFrame structure, users can perform complex vectorised operations that are significantly faster and more readable than standard Python loops.
