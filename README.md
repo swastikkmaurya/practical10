@@ -40,6 +40,15 @@ df.sort_values(by="ColumnName", ascending=False): Reorders your data based on sp
 4. Merging and Joining
 Rarely do we work with just one table. Pandas handles relational data like SQL does.
 
+5. Element-wise Operations & Transformation
+If you need to modify every value in a column:
+
+df["Col"].apply(lambda x: x + 10): Applies a custom function to every element in a column.
+
+df["Col"].map({old_val: new_val}): Great for replacing categorical labels (e.g., changing "M/F" to "Male/Female").
+
+df.rename(columns={"OldName": "NewName"}): Changes the column headers.
+
 Function	Purpose
 pd.concat()	Glues two DataFrames together (either vertically or horizontally).
 pd.merge()	Joins two DataFrames based on a common key (Inner, Outer, Left, Right joins).
