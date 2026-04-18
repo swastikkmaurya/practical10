@@ -49,6 +49,13 @@ df["Col"].map({old_val: new_val}): Great for replacing categorical labels (e.g.,
 
 df.rename(columns={"OldName": "NewName"}): Changes the column headers.
 
+6. Time Series Analysis
+Pandas is famous for its ability to handle dates and times efficiently.
+
+pd.to_datetime(): Converts a string column (like "2023-01-01") into actual Python datetime objects.
+
+df.resample('M').mean(): If your index is time-based, this allows you to "downsample" data (e.g., turning daily data into monthly averages).
+
 Function	Purpose
 pd.concat()	Glues two DataFrames together (either vertically or horizontally).
 pd.merge()	Joins two DataFrames based on a common key (Inner, Outer, Left, Right joins).
